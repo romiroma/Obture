@@ -13,15 +13,21 @@ struct ObtureApp: App {
 
     @Environment(\.scenePhase) private var scenePhase
 
-    let store: Store<Obture.State, Obture.Action> = .init(initialState: .init(),
+    let store: Store<Obture.State, Obture.Action> = .init(initialState: .getStarted(.init()),
                                                           reducer: Obture.reducer,
                                                           environment: Resolver.obtureAppDependencies().resolve())
     
     var body: some Scene {
         WithViewStore(store) { viewStore in
             WindowGroup {
-                IfLetStore(store.scope(state: \.getStarted, action: { Obture.Action.getStarted($0) })) { s in
-                    GetStartedView(store: s)
+                SwitchStore(store) {
+                    CaseLet(state: /Obture.State.getStarted, action: Obture.Action.getStarted) { getStartedStore in
+                        GetStartedView(store: getStartedStore)
+                    }
+                    CaseLet(state: /Obture.State.capture, action: Obture.Action.capture) { captureStore in
+                        CaptureView(store: captureStore)
+                            .edgesIgnoringSafeArea(.all)
+                    }
                 }
             }.onChange(of: scenePhase) { newValue in
                 switch newValue {

@@ -16,17 +16,13 @@ struct GetStartedView: View {
             VStack {
                 Spacer()
                 Button("Continue") {
-                    viewStore.send(.continue)
+                    withAnimation {
+                        viewStore.send(.continue)
+                    }
                 }
             }.onAppear {
                 viewStore.send(.appear)
             }
         }
-    }
-}
-
-struct GetStartedView_Previews: PreviewProvider {
-    static var previews: some View {
-        GetStartedView(store: .init(initialState: .init(), reducer: GetStarted.reducer, environment: Resolver.resolve()))
     }
 }

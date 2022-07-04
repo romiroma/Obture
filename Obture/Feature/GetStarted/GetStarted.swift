@@ -26,5 +26,5 @@ enum GetStarted {
         case .continue:
             return .none
         }
-    }.debug()
+    }
 }
