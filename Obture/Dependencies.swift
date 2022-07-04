@@ -14,7 +14,7 @@ import CoreMotion
 import os
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture",
-                            category: "SessionConfigurator/PhotoTaker")
+                            category: "SessionConfigurator/PhotoTaker/Dependencies")
 
 final class SessionConfiguratorImpl: SessionConfigurator {
     lazy var photoOutput: AVCapturePhotoOutput = .init()
@@ -29,6 +29,24 @@ extension Resolver {
     static func obtureAppDependencies() -> Resolver {
         let r = Resolver.main
         r.register(GetStarted.Environment.self, factory: GetStarted.Environment.init)
+        r.register(FileManager.self, factory: { FileManager.default })
+        r.register(URL.self, name: "projectsDirectory") {
+            let fileManager: FileManager = r.resolve()
+            guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                return nil
+            }
+            let projectsDirectoryURL = documentsDirectory.appending(path: "Projects", directoryHint: .isDirectory)
+            do {
+                try fileManager.createDirectory(at: projectsDirectoryURL, withIntermediateDirectories: false)
+            } catch {
+                logger.warning("\(error.localizedDescription)")
+            }
+            guard fileManager.fileExists(atPath: projectsDirectoryURL.path) else {
+                logger.error("folder \(projectsDirectoryURL) doesnt exists")
+                return nil
+            }
+            return projectsDirectoryURL
+        }
         r.register(Obture.Environment.self, factory: Obture.Environment.init)
         r.register(Permissions.Environment.self) {
             .init {
@@ -47,11 +65,28 @@ extension Resolver {
             let queue: DispatchQueue = .init(label: "SessionQueue", qos: .utility)
             return queue
         }).scope(.application)
+        r.register(((URL, String) -> URL?).self, name: "createProjectDirectoryClosure") {
+            let fileManager: FileManager = r.resolve()
+            return {
+                let projectURL = $0.appendingPathComponent($1)
+                do {
+                    try fileManager.createDirectory(at: projectURL, withIntermediateDirectories: false)
+                } catch {
+                    return nil
+                }
+                var isDirectory: ObjCBool = false
+                guard fileManager.fileExists(atPath: projectURL.path, isDirectory: &isDirectory), isDirectory.boolValue else {
+                    return nil
+                }
+                return projectURL
+            }
+        }
         r.register(PhotoTaker.self, factory: PhotoTakerImpl.init)
         r.register(CMMotionManager.self, factory: CMMotionManager.init).scope(.application)
         r.register(Motion.Environment.self, factory: Motion.Environment.init)
         r.register(CameraSession.Environment.self, factory: CameraSession.Environment.init)
         r.register(Camera.Environment.self, factory: Camera.Environment.init)
+        r.register(NewProject.Environment.self, factory: NewProject.Environment.init)
         r.register(Capture.Environment.self, factory: Capture.Environment.init)
         r.register(SessionConfigurator.self, factory: SessionConfiguratorImpl.init)
 

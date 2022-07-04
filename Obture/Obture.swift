@@ -27,8 +27,10 @@ enum Obture {
     }
 
     struct Environment {
-        @Injected fileprivate var getStarted: GetStarted.Environment
-        @Injected fileprivate var capture: Capture.Environment
+        @Injected var getStarted: GetStarted.Environment
+        @Injected var capture: Capture.Environment
+        @Injected(name: "projectsDirectory") var projectsDirectory: URL
+        @Injected(name: "createProjectDirectoryClosure") var createProjectDirectory: (URL, String) -> URL?
     }
 
     static let reducer: Reducer<State, Action, Environment> = .combine(
@@ -66,7 +68,15 @@ enum Obture {
                     return .none
                 }
             case .getStarted(.continue):
-                state = .capture(.init(camera: .permissions(.none), motion: .idle))
+                let projectId = UUID().uuidString
+                guard let projectDir = environment.createProjectDirectory(environment.projectsDirectory, projectId) else {
+                    // TODO: handle such state
+                    return .none
+                }
+                let now = Date()
+                state = .capture(.init(camera: .permissions(.none),
+                                       motion: .idle,
+                                       project: .init(directory: projectDir, id: projectId, created_at: now, updated_at: now, subnodes: [])))
             default:
                 break
             }

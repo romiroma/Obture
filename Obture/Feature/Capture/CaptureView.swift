@@ -17,8 +17,12 @@ struct CaptureView: View {
                 MotionView(store: store.scope(state: \.motion, action: Capture.Action.motion))
                 CameraView(store: store.scope(state: \.camera, action: Capture.Action.camera))
                     .edgesIgnoringSafeArea(.all)
-                CaptureButton(store: store)
-                    .frame(alignment: .center)
+                VStack {
+                    Spacer()
+                    CaptureButton(store: store)
+                        .frame(alignment: .center)
+                }
+
             }.onAppear {
                 viewStore.send(.appear)
             }

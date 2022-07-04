@@ -12,18 +12,21 @@ enum Capture {
     struct State: Equatable {
         var camera: Camera.State
         var motion: Motion.State
+        var project: NewProject.State
     }
 
     enum Action: Equatable {
         case appear
         case camera(Camera.Action)
         case motion(Motion.Action)
+        case project(NewProject.Action)
         case takePhoto
     }
 
     struct Environment {
         @Injected var camera: Camera.Environment
         @Injected var motion: Motion.Environment
+        @Injected var project: NewProject.Environment
     }
 
     static let reducer: Reducer<State, Action, Environment> = .combine(
@@ -31,6 +34,9 @@ enum Capture {
         Motion.reducer.pullback(state: \.motion,
                                 action: /Action.motion,
                                 environment: \.motion),
+        NewProject.reducer.pullback(state: \.project,
+                                    action: /Action.project,
+                                    environment: \.project),
         .init { state, action, environment in
             switch action {
             case .appear:

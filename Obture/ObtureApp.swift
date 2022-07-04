@@ -26,7 +26,6 @@ struct ObtureApp: App {
                     }
                     CaseLet(state: /Obture.State.capture, action: Obture.Action.capture) { captureStore in
                         CaptureView(store: captureStore)
-                            .edgesIgnoringSafeArea(.all)
                     }
                 }
             }.onChange(of: scenePhase) { newValue in
