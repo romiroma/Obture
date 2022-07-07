@@ -10,16 +10,16 @@ import Combine
 
 import os
 
-fileprivate let logger: Logger = .init(subsystem: "com.andrykevych.Obture", category: "ProjectEdit")
+fileprivate let logger: Logger = .init(subsystem: "com.andrykevych.Obture", category: "SubNode")
 
-extension ProjectEdit {
+extension Project {
     enum SubNode {
 
         enum Error: Equatable, Swift.Error {
             case writeFailure
         }
 
-        struct State: Node {
+        struct State: Identifiable, Equatable, Codable {
             let directory: URL
             var id: String
             var createdAt: Date
@@ -60,7 +60,7 @@ extension ProjectEdit {
     }
 }
 
-extension ProjectEdit.SubNode.State {
+extension Project.SubNode.State {
 
     init(parentDirectory: URL, createdAt: Date) throws {
         let id = UUID().uuidString

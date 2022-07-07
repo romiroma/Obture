@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D1DAE3228731FEE00E836AB /* MotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3128731FEE00E836AB /* MotionView.swift */; };
-		5D1DAE3528735C1B00E836AB /* ProjectEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3428735C1B00E836AB /* ProjectEdit.swift */; };
+		5D1DAE3528735C1B00E836AB /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3428735C1B00E836AB /* Project.swift */; };
 		5D1DAE372873600B00E836AB /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE362873600B00E836AB /* Node.swift */; };
-		5D1DAE3A287369A700E836AB /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE39287369A700E836AB /* Project.swift */; };
 		5D1DAE3E2875B52500E836AB /* CapturedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3D2875B52500E836AB /* CapturedPhoto.swift */; };
 		5D3E3A7B286C8BC00053D597 /* ObtureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A7A286C8BC00053D597 /* ObtureApp.swift */; };
 		5D3E3A7F286C8BC10053D597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E3A7E286C8BC10053D597 /* Assets.xcassets */; };
@@ -28,6 +27,7 @@
 		5D3E3AA9286F3F0D0053D597 /* effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AA8286F3F0D0053D597 /* effect.swift */; };
 		5D3E3AB0286F5DED0053D597 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AAF286F5DED0053D597 /* Camera.swift */; };
 		5D3E3AB2286F60A20053D597 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AB1286F60A20053D597 /* CameraView.swift */; };
+		5D40839F2876B93B000BB24F /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D40839E2876B93B000BB24F /* Exporter.swift */; };
 		5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AB31C286FFDFC0060142B /* CameraSession.swift */; };
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
 		5DAEA4552870722B0001791A /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA4542870722B0001791A /* CameraPreviewView.swift */; };
@@ -39,10 +39,9 @@
 
 /* Begin PBXFileReference section */
 		5D1DAE3128731FEE00E836AB /* MotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionView.swift; sourceTree = "<group>"; };
-		5D1DAE3428735C1B00E836AB /* ProjectEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEdit.swift; sourceTree = "<group>"; };
+		5D1DAE3428735C1B00E836AB /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5D1DAE362873600B00E836AB /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		5D1DAE382873651300E836AB /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
-		5D1DAE39287369A700E836AB /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5D1DAE3D2875B52500E836AB /* CapturedPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedPhoto.swift; sourceTree = "<group>"; };
 		5D1DAE4028760AD400E836AB /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
 		5D3E3A77286C8BC00053D597 /* Obture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Obture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +60,7 @@
 		5D3E3AA8286F3F0D0053D597 /* effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = effect.swift; sourceTree = "<group>"; };
 		5D3E3AAF286F5DED0053D597 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		5D3E3AB1286F60A20053D597 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		5D40839E2876B93B000BB24F /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
 		5D4CE32E28761E4000F7F428 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealityKit.framework; sourceTree = "<group>"; };
 		5D4CE32F28761E4000F7F428 /* RealityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealityFoundation.framework; sourceTree = "<group>"; };
 		5D6AB31C286FFDFC0060142B /* CameraSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSession.swift; sourceTree = "<group>"; };
@@ -88,9 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				5D1DAE3D2875B52500E836AB /* CapturedPhoto.swift */,
-				5D1DAE39287369A700E836AB /* Project.swift */,
-				5D1DAE3428735C1B00E836AB /* ProjectEdit.swift */,
+				5D1DAE3428735C1B00E836AB /* Project.swift */,
 				5D1DAE362873600B00E836AB /* Node.swift */,
+				5D40839E2876B93B000BB24F /* Exporter.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -293,7 +293,8 @@
 				5D3E3A9D286CA7410053D597 /* CaptureView.swift in Sources */,
 				5D3E3AA9286F3F0D0053D597 /* effect.swift in Sources */,
 				5DAEA45728715D710001791A /* CameraSessionView.swift in Sources */,
-				5D1DAE3528735C1B00E836AB /* ProjectEdit.swift in Sources */,
+				5D40839F2876B93B000BB24F /* Exporter.swift in Sources */,
+				5D1DAE3528735C1B00E836AB /* Project.swift in Sources */,
 				5D3E3AA0286CA7C70053D597 /* Permissions.swift in Sources */,
 				5D1DAE372873600B00E836AB /* Node.swift in Sources */,
 				5D3E3A96286C92130053D597 /* Obture.swift in Sources */,
@@ -310,7 +311,6 @@
 				5DB31D592872E19D00B159F5 /* PhotoCaptureDelegate.swift in Sources */,
 				5DB31D572872B2A100B159F5 /* CaptureButton.swift in Sources */,
 				5D3E3A7B286C8BC00053D597 /* ObtureApp.swift in Sources */,
-				5D1DAE3A287369A700E836AB /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

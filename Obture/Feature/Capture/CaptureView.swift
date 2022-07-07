@@ -23,9 +23,16 @@ struct CaptureView: View {
                         Spacer()
                         CaptureButton(store: store)
                             .frame(alignment: .center)
-                        Button("Photogrametry!") {
-                            viewStore.send(.photogrammetry)
+                        if viewStore.state.project.export == nil {
+                            Button("Photogrametry!") {
+                                viewStore.send(.photogrammetry)
+                            }
+                        } else {
+                            Button("Share!") {
+                                viewStore.send(.share)
+                            }
                         }
+
                         Spacer()
                     }
 
@@ -35,7 +42,5 @@ struct CaptureView: View {
                 viewStore.send(.appear)
             }
         }
-
-
     }
 }

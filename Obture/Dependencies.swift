@@ -86,12 +86,23 @@ extension Resolver {
         r.register(Motion.Environment.self, factory: Motion.Environment.init)
         r.register(CameraSession.Environment.self, factory: CameraSession.Environment.init)
         r.register(Camera.Environment.self, factory: Camera.Environment.init)
-        r.register(ProjectEdit.Environment.self, factory: ProjectEdit.Environment.init)
-        r.register(ProjectEdit.SubNode.Environment.self, factory: ProjectEdit.SubNode.Environment.init)
+        r.register(Project.Environment.self, factory: Project.Environment.init)
+        r.register(Project.SubNode.Environment.self, factory: Project.SubNode.Environment.init)
         r.register(Capture.Environment.self, factory: Capture.Environment.init)
         r.register(SessionConfigurator.self, factory: SessionConfiguratorImpl.init)
-
+        r.register(Exporter.self, factory: ExporterImpl.init)
         r.register(CapturedPhotoWriter.self, factory: CapturedPhotoWriterImpl.init)
+        r.register(((URL) -> Void).self, name: "shareURL") {
+            return { url in
+                guard let source = UIApplication.shared.windows.last?.rootViewController else { return }
+                let vc = UIActivityViewController(
+                    activityItems: [url],
+                    applicationActivities: nil
+                )
+                vc.popoverPresentationController?.sourceView = source.view
+                source.present(vc, animated: true)
+            }
+        }
         return r
     }
 }

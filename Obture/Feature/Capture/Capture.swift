@@ -13,7 +13,7 @@ enum Capture {
     struct State: Equatable {
         var camera: Camera.State
         var motion: Motion.State
-        var project: ProjectEdit.State
+        var project: Project.State
 
         var buttonTitle: String = ""
     }
@@ -22,15 +22,17 @@ enum Capture {
         case appear
         case camera(Camera.Action)
         case motion(Motion.Action)
-        case project(ProjectEdit.Action)
+        case project(Project.Action)
         case takePhoto
         case photogrammetry
+        case share
     }
 
     struct Environment {
         @Injected var camera: Camera.Environment
         @Injected var motion: Motion.Environment
-        @Injected var project: ProjectEdit.Environment
+        @Injected var project: Project.Environment
+        @Injected(name: "shareURL") var share: (URL) -> Void
     }
 
     static let reducer: Reducer<State, Action, Environment> = .combine(
@@ -38,7 +40,7 @@ enum Capture {
         Motion.reducer.pullback(state: \.motion,
                                 action: /Action.motion,
                                 environment: \.motion),
-        ProjectEdit.reducer.pullback(state: \.project,
+        Project.reducer.pullback(state: \.project,
                                     action: /Action.project,
                                     environment: \.project),
         .init { state, action, environment in
@@ -52,7 +54,12 @@ enum Capture {
             case .project(.subnode(id: _, action: .didWrite)):
                 state.buttonTitle = .init(describing: state.project.subnodes.count)
             case .photogrammetry:
-                break
+                return .init(value: Action.project(.export))
+            case .share:
+                let project = state.project
+                return .fireAndForget {
+                    project.export.map(environment.share)
+                }
             default:
                 break
             }
