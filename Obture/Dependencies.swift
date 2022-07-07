@@ -10,7 +10,8 @@ import AVFoundation
 import UIKit
 import Combine
 import CoreMotion
-
+import Common
+import Project
 import os
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture",
@@ -47,7 +48,9 @@ extension Resolver {
             }
             return projectsDirectoryURL
         }
+
         r.register(Obture.Environment.self, factory: Obture.Environment.init)
+
         r.register(Permissions.Environment.self) {
             .init {
                 AVCaptureDevice.authorizationStatus(for: .video)
@@ -203,7 +206,7 @@ extension PhotoTaker {
     func takePhoto(_ session: AVCaptureSession,
                    queue: DispatchQueue,
                    from photoOutput: AVCapturePhotoOutput,
-                   motionManager: CMMotionManager) -> Future<CapturedPhoto, Error> {
+                   motionManager: CMMotionManager) -> Future<CapturedPhoto, Swift.Error> {
         let videoPreviewLayerOrientation = session.connections[0].videoOrientation
         weak var weakSelf = self
         return .init { promise in

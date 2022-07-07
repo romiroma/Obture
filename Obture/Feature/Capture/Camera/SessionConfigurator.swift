@@ -8,7 +8,7 @@
 import AVFoundation
 import Combine
 import CoreMotion
-
+import Project
 import os
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture",
@@ -26,5 +26,5 @@ protocol PhotoTaker: AnyObject {
     func takePhoto(_ session: AVCaptureSession,
                    queue: DispatchQueue,
                    from photoOutput: AVCapturePhotoOutput,
-                   motionManager: CMMotionManager) -> Future<CapturedPhoto, Error>
+                   motionManager: CMMotionManager) -> Future<CapturedPhoto, Swift.Error>
 }

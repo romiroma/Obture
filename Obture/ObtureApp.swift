@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import Common
 
 @main
 struct ObtureApp: App {
@@ -20,7 +21,6 @@ struct ObtureApp: App {
     var body: some Scene {
         WithViewStore(store) { viewStore in
             WindowGroup {
-//                NavigationStack {
                     SwitchStore(store) {
                         CaseLet(state: /Obture.State.getStarted, action: Obture.Action.getStarted) { getStartedStore in
                             GetStartedView(store: getStartedStore)
@@ -29,7 +29,6 @@ struct ObtureApp: App {
                             CaptureView(store: captureStore)
                         }
                     }
-//                }
             }.onChange(of: scenePhase) { newValue in
                 switch newValue {
                 case .active:

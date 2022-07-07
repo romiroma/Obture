@@ -6,6 +6,8 @@
 //
 
 import ComposableArchitecture
+import Common
+import Project
 
 enum Obture {
 
@@ -64,23 +66,28 @@ enum Obture {
                         break
                     }
 
-                case .getStarted(_):
+                case .getStarted:
                     return .none
                 }
             case .getStarted(.continue):
                 let projectId = UUID().uuidString
                 guard let projectDir = environment.createProjectDirectory(environment.projectsDirectory, projectId) else {
-                    // TODO: handle such state
+//                    // TODO: handle such state
                     return .none
                 }
                 let now = Date()
                 state = .capture(.init(camera: .permissions(.none),
                                        motion: .idle,
-                                       project: .init(directory: projectDir, id: projectId, createdAt: now, updatedAt: now, subnodes: [])))
+                                       project: .init(directory: projectDir,
+                                                      id: projectId,
+                                                      createdAt: now,
+                                                      updatedAt: now,
+                                                      subnodes: [],
+                                                      export: nil)))
             default:
                 break
             }
             return .none
         }
-    ).debug()
+    )
 }

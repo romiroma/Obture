@@ -8,6 +8,7 @@
 import ComposableArchitecture
 import Foundation
 import AVFoundation
+import Common
 
 enum Camera {
 

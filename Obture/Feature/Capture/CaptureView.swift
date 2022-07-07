@@ -14,7 +14,6 @@ struct CaptureView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ZStack {
-                MotionView(store: store.scope(state: \.motion, action: Capture.Action.motion))
                 CameraView(store: store.scope(state: \.camera, action: Capture.Action.camera))
                     .edgesIgnoringSafeArea(.all)
                 VStack {

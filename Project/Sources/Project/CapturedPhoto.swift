@@ -10,35 +10,44 @@ import AVFoundation
 import Combine
 import CoreMotion
 
-struct CapturedPhoto: Equatable {
-    static func == (lhs: CapturedPhoto, rhs: CapturedPhoto) -> Bool {
+public struct CapturedPhoto: Equatable {
+    public static func == (lhs: CapturedPhoto, rhs: CapturedPhoto) -> Bool {
         return lhs.photo === rhs.photo
     }
 
-    let photo: AVCapturePhoto
-    let depthMapData: Data
-    let gravity: CMAcceleration
+    public let photo: AVCapturePhoto
+    public let depthMapData: Data
+    public let gravity: CMAcceleration
 
-    let createdAt: Date = .init()
+    public let createdAt: Date = .init()
+
+    public init(photo: AVCapturePhoto, depthMapData: Data, gravity: CMAcceleration) {
+        self.photo = photo
+        self.depthMapData = depthMapData
+        self.gravity = gravity
+    }
 }
 
-protocol CapturedPhotoWriter: AnyObject {
-    func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Error>
+public protocol CapturedPhotoWriter: AnyObject {
+    func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Swift.Error>
 }
 
 import os
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture.CapturedPhotoWriterImpl", category: "CapturedPhotoWriterImpl")
 
-class CapturedPhotoWriterImpl: CapturedPhotoWriter {
+public class CapturedPhotoWriterImpl: CapturedPhotoWriter {
 
-    enum Error: Swift.Error {
+    public init() {}
+
+    public enum Error: Swift.Error {
         case cantWritePhotoData(Swift.Error)
         case cantWriteDepthData(Swift.Error)
         case cantWriteGravityData(Swift.Error)
         case noPhotoFileDataRepresentation
     }
-    func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Swift.Error> {
+
+    public func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Swift.Error> {
         return .init { promise in
             guard let photoFileData = photo.photo.fileDataRepresentation() else {
                 promise(.failure(Error.noPhotoFileDataRepresentation))

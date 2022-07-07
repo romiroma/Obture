@@ -11,7 +11,6 @@ import UIKit
 import os
 
 struct CameraPreviewView: UIViewRepresentable {
-    let previewViewCornerRadius: CGFloat = 50
 
     class PreviewView: UIView {
 

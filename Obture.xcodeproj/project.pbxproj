@@ -7,27 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D1DAE3228731FEE00E836AB /* MotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3128731FEE00E836AB /* MotionView.swift */; };
-		5D1DAE3528735C1B00E836AB /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3428735C1B00E836AB /* Project.swift */; };
-		5D1DAE372873600B00E836AB /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE362873600B00E836AB /* Node.swift */; };
-		5D1DAE3E2875B52500E836AB /* CapturedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DAE3D2875B52500E836AB /* CapturedPhoto.swift */; };
 		5D3E3A7B286C8BC00053D597 /* ObtureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A7A286C8BC00053D597 /* ObtureApp.swift */; };
 		5D3E3A7F286C8BC10053D597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E3A7E286C8BC10053D597 /* Assets.xcassets */; };
 		5D3E3A82286C8BC10053D597 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E3A81286C8BC10053D597 /* Preview Assets.xcassets */; };
 		5D3E3A8A286C8DEB0053D597 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5D3E3A89286C8DEB0053D597 /* ComposableArchitecture */; };
 		5D3E3A8F286C8F500053D597 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A8E286C8F500053D597 /* GetStartedView.swift */; };
 		5D3E3A91286C8F8E0053D597 /* GetStarted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A90286C8F8E0053D597 /* GetStarted.swift */; };
-		5D3E3A94286C91750053D597 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A93286C91750053D597 /* Resolver.swift */; };
 		5D3E3A96286C92130053D597 /* Obture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A95286C92130053D597 /* Obture.swift */; };
 		5D3E3A98286C92E90053D597 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A97286C92E90053D597 /* Dependencies.swift */; };
 		5D3E3A9B286CA73A0053D597 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A9A286CA73A0053D597 /* Capture.swift */; };
 		5D3E3A9D286CA7410053D597 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A9C286CA7410053D597 /* CaptureView.swift */; };
 		5D3E3AA0286CA7C70053D597 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A9F286CA7C70053D597 /* Permissions.swift */; };
 		5D3E3AA6286CA8130053D597 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AA5286CA8130053D597 /* PermissionsView.swift */; };
-		5D3E3AA9286F3F0D0053D597 /* effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AA8286F3F0D0053D597 /* effect.swift */; };
 		5D3E3AB0286F5DED0053D597 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AAF286F5DED0053D597 /* Camera.swift */; };
 		5D3E3AB2286F60A20053D597 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AB1286F60A20053D597 /* CameraView.swift */; };
-		5D40839F2876B93B000BB24F /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D40839E2876B93B000BB24F /* Exporter.swift */; };
+		5D4083A32876D9C8000BB24F /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 5D4083A22876D9C8000BB24F /* Common */; };
+		5D4083A52876D9C8000BB24F /* Project in Frameworks */ = {isa = PBXBuildFile; productRef = 5D4083A42876D9C8000BB24F /* Project */; };
 		5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AB31C286FFDFC0060142B /* CameraSession.swift */; };
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
 		5DAEA4552870722B0001791A /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA4542870722B0001791A /* CameraPreviewView.swift */; };
@@ -38,11 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D1DAE3128731FEE00E836AB /* MotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionView.swift; sourceTree = "<group>"; };
-		5D1DAE3428735C1B00E836AB /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		5D1DAE362873600B00E836AB /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		5D1DAE382873651300E836AB /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
-		5D1DAE3D2875B52500E836AB /* CapturedPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedPhoto.swift; sourceTree = "<group>"; };
 		5D1DAE4028760AD400E836AB /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
 		5D3E3A77286C8BC00053D597 /* Obture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Obture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3E3A7A286C8BC00053D597 /* ObtureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtureApp.swift; sourceTree = "<group>"; };
@@ -50,17 +41,16 @@
 		5D3E3A81286C8BC10053D597 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5D3E3A8E286C8F500053D597 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		5D3E3A90286C8F8E0053D597 /* GetStarted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStarted.swift; sourceTree = "<group>"; };
-		5D3E3A93286C91750053D597 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		5D3E3A95286C92130053D597 /* Obture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obture.swift; sourceTree = "<group>"; };
 		5D3E3A97286C92E90053D597 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		5D3E3A9A286CA73A0053D597 /* Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
 		5D3E3A9C286CA7410053D597 /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		5D3E3A9F286CA7C70053D597 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		5D3E3AA5286CA8130053D597 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
-		5D3E3AA8286F3F0D0053D597 /* effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = effect.swift; sourceTree = "<group>"; };
 		5D3E3AAF286F5DED0053D597 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		5D3E3AB1286F60A20053D597 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		5D40839E2876B93B000BB24F /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		5D4083A02876D6B0000BB24F /* Project */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Project; sourceTree = "<group>"; };
+		5D4083A12876D776000BB24F /* Common */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Common; sourceTree = "<group>"; };
 		5D4CE32E28761E4000F7F428 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealityKit.framework; sourceTree = "<group>"; };
 		5D4CE32F28761E4000F7F428 /* RealityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealityFoundation.framework; sourceTree = "<group>"; };
 		5D6AB31C286FFDFC0060142B /* CameraSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSession.swift; sourceTree = "<group>"; };
@@ -77,24 +67,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4083A52876D9C8000BB24F /* Project in Frameworks */,
 				5D3E3A8A286C8DEB0053D597 /* ComposableArchitecture in Frameworks */,
+				5D4083A32876D9C8000BB24F /* Common in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D1DAE3328735C0600E836AB /* Project */ = {
-			isa = PBXGroup;
-			children = (
-				5D1DAE3D2875B52500E836AB /* CapturedPhoto.swift */,
-				5D1DAE3428735C1B00E836AB /* Project.swift */,
-				5D1DAE362873600B00E836AB /* Node.swift */,
-				5D40839E2876B93B000BB24F /* Exporter.swift */,
-			);
-			path = Project;
-			sourceTree = "<group>";
-		};
 		5D1DAE3F28760AD400E836AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +89,8 @@
 		5D3E3A6E286C8BC00053D597 = {
 			isa = PBXGroup;
 			children = (
+				5D4083A12876D776000BB24F /* Common */,
+				5D4083A02876D6B0000BB24F /* Project */,
 				5D1DAE382873651300E836AB /* Readme.md */,
 				5D3E3A79286C8BC00053D597 /* Obture */,
 				5D3E3A78286C8BC00053D597 /* Products */,
@@ -129,7 +112,6 @@
 				5D3E3A95286C92130053D597 /* Obture.swift */,
 				5D3E3A97286C92E90053D597 /* Dependencies.swift */,
 				5D3E3A7A286C8BC00053D597 /* ObtureApp.swift */,
-				5D3E3A92286C916B0053D597 /* Common */,
 				5D3E3A8C286C8F140053D597 /* Feature */,
 				5D3E3A7E286C8BC10053D597 /* Assets.xcassets */,
 				5D3E3A80286C8BC10053D597 /* Preview Content */,
@@ -163,15 +145,6 @@
 			path = GetStarted;
 			sourceTree = "<group>";
 		};
-		5D3E3A92286C916B0053D597 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				5D3E3A93286C91750053D597 /* Resolver.swift */,
-				5D3E3AA8286F3F0D0053D597 /* effect.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		5D3E3A99286CA7260053D597 /* Capture */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,7 +153,6 @@
 				5DB31D562872B2A100B159F5 /* CaptureButton.swift */,
 				5D3E3AAE286F5DDF0053D597 /* Camera */,
 				5DB31D5A2872F4C200B159F5 /* Motion */,
-				5D1DAE3328735C0600E836AB /* Project */,
 			);
 			path = Capture;
 			sourceTree = "<group>";
@@ -205,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				5DB31D5B2872F4CE00B159F5 /* Motion.swift */,
-				5D1DAE3128731FEE00E836AB /* MotionView.swift */,
 			);
 			path = Motion;
 			sourceTree = "<group>";
@@ -228,6 +199,8 @@
 			name = Obture;
 			packageProductDependencies = (
 				5D3E3A89286C8DEB0053D597 /* ComposableArchitecture */,
+				5D4083A22876D9C8000BB24F /* Common */,
+				5D4083A42876D9C8000BB24F /* Project */,
 			);
 			productName = Obture;
 			productReference = 5D3E3A77286C8BC00053D597 /* Obture.app */;
@@ -286,23 +259,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3E3A96286C92130053D597 /* Obture.swift in Sources */,
 				5D3E3A98286C92E90053D597 /* Dependencies.swift in Sources */,
 				5D3E3AB2286F60A20053D597 /* CameraView.swift in Sources */,
-				5D3E3A94286C91750053D597 /* Resolver.swift in Sources */,
 				5D3E3AA6286CA8130053D597 /* PermissionsView.swift in Sources */,
 				5D3E3A9D286CA7410053D597 /* CaptureView.swift in Sources */,
-				5D3E3AA9286F3F0D0053D597 /* effect.swift in Sources */,
 				5DAEA45728715D710001791A /* CameraSessionView.swift in Sources */,
-				5D40839F2876B93B000BB24F /* Exporter.swift in Sources */,
-				5D1DAE3528735C1B00E836AB /* Project.swift in Sources */,
 				5D3E3AA0286CA7C70053D597 /* Permissions.swift in Sources */,
-				5D1DAE372873600B00E836AB /* Node.swift in Sources */,
-				5D3E3A96286C92130053D597 /* Obture.swift in Sources */,
-				5D1DAE3228731FEE00E836AB /* MotionView.swift in Sources */,
 				5DAEA4552870722B0001791A /* CameraPreviewView.swift in Sources */,
 				5D3E3A9B286CA73A0053D597 /* Capture.swift in Sources */,
 				5D3E3A8F286C8F500053D597 /* GetStartedView.swift in Sources */,
-				5D1DAE3E2875B52500E836AB /* CapturedPhoto.swift in Sources */,
 				5D3E3AB0286F5DED0053D597 /* Camera.swift in Sources */,
 				5DB31D5C2872F4CE00B159F5 /* Motion.swift in Sources */,
 				5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */,
@@ -546,6 +512,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5D3E3A88286C8DEB0053D597 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		5D4083A22876D9C8000BB24F /* Common */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Common;
+		};
+		5D4083A42876D9C8000BB24F /* Project */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Project;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

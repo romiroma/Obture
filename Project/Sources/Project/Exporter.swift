@@ -7,17 +7,21 @@
 
 import Foundation
 import Combine
+import Common
 
-protocol Exporter {
-    func export(_ project: Project.State) -> Future<URL, Error>
+public protocol Exporter {
+    func export(_ project: State) -> Future<URL, Error>
 }
 
-final class ExporterImpl: Exporter {
+public final class ExporterImpl: Exporter {
+    public init() {}
+
     let queue: DispatchQueue = .init(label: "com.andrykevych.Obture.Exporter.queue", qos: .userInitiated)
-    func export(_ project: Project.State) -> Future<URL, Error> {
+    
+    public func export(_ project: State) -> Future<URL, Error> {
+        @Injected var fileManager: FileManager
         return .init { [weak self] promise in
             self?.queue.async {
-                @Injected var fileManager: FileManager
                 let coordinator = NSFileCoordinator()
                 var error: NSError?
                 coordinator.coordinate(readingItemAt: project.directory, options: [.forUploading], error: &error) { (zipUrl) in
@@ -31,7 +35,7 @@ final class ExporterImpl: Exporter {
                         try fileManager.moveItem(at: zipUrl, to: tmpUrl)
                         promise(.success((tmpUrl)))
                     } catch {
-                        promise(.failure(error))
+                        promise(.failure(Error.exportError))
                     }
                 }
             }
