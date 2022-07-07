@@ -14,6 +14,6 @@ protocol Project: Node {
 protocol Node: Identifiable, Equatable, Codable {
     var id: String { get }
 
-    var created_at: Date { get }
-    var updated_at: Date { get }
+    var createdAt: Date { get }
+    var updatedAt: Date { get }
 }

@@ -30,7 +30,10 @@ struct CaptureButton: View {
             Button(action: {
                 viewStore.send(.takePhoto)
             }, label: {
-                ManualCaptureButtonView()
+                ZStack {
+                    ManualCaptureButtonView().frame(alignment: .center)
+                    Text(viewStore.buttonTitle)
+                }
             })//.disabled(!model.isCameraAvailable || !model.readyToCapture)
         }
     }
@@ -55,6 +58,7 @@ struct CaptureButton: View {
 
 /// This is a helper view for the `CaptureButton`. It implements the shape for manual capture mode.
 struct ManualCaptureButtonView: View {
+
     var body: some View {
         ZStack {
             Circle()

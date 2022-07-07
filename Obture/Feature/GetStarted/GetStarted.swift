@@ -15,9 +15,7 @@ enum GetStarted {
         case `continue`
     }
 
-    struct Environment {
-
-    }
+    struct Environment {}
 
     static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
         switch action {

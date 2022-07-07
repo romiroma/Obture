@@ -49,7 +49,7 @@ struct CameraPreviewView: UIViewRepresentable {
         // Set the view's initial state.
         view.backgroundColor = .black
         view.videoPreviewLayer.cornerRadius = 0
-        view.videoPreviewLayer.videoGravity = .resizeAspectFill
+        view.videoPreviewLayer.videoGravity = .resizeAspect
         view.videoPreviewLayer.connection?.videoOrientation = .portrait
 
         return view

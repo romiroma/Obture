@@ -19,8 +19,16 @@ struct CaptureView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     Spacer()
-                    CaptureButton(store: store)
-                        .frame(alignment: .center)
+                    HStack {
+                        Spacer()
+                        CaptureButton(store: store)
+                            .frame(alignment: .center)
+                        Button("Photogrametry!") {
+                            viewStore.send(.photogrammetry)
+                        }
+                        Spacer()
+                    }
+
                 }
 
             }.onAppear {

@@ -15,6 +15,7 @@ struct GetStartedView: View {
         WithViewStore(store) { viewStore in
             VStack {
                 Spacer()
+//                NavigationLink("Continue", value: "Capture")
                 Button("Continue") {
                     withAnimation {
                         viewStore.send(.continue)

@@ -6,24 +6,67 @@
 //
 
 import ComposableArchitecture
+import Combine
 
-extension NewProject {
+import os
+
+fileprivate let logger: Logger = .init(subsystem: "com.andrykevych.Obture", category: "ProjectEdit")
+
+extension ProjectEdit {
     enum SubNode {
+
+        enum Error: Equatable, Swift.Error {
+            case writeFailure
+        }
 
         struct State: Node {
             let directory: URL
             var id: String
-            var created_at: Date
-            var updated_at: Date
+            var createdAt: Date
+            var updatedAt: Date
         }
 
-        enum Action: Equatable {}
+        enum Action: Equatable {
+            case write(CapturedPhoto)
+            case didWrite(CapturedPhoto)
+            case failure(CapturedPhoto, Error)
+        }
 
-        struct Environment {}
+        struct Environment {
+            @Injected var writer: CapturedPhotoWriter
+        }
 
         static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
-                .none
+            switch action {
+            case .write(let photo):
+                return environment.writer.write(photo, to: state.directory)
+                    .receive(on: DispatchQueue.main.eraseToAnyScheduler())
+                    .catchToEffect { result in
+                        switch result {
+                        case .success:
+                            return .didWrite(photo)
+                        case .failure:
+                            return .failure(photo, .writeFailure)
+
+                    }
+                }
+            case .didWrite(_):
+                break
+            case .failure(_, _):
+                break
+            }
+            return .none
         }
     }
 }
 
+extension ProjectEdit.SubNode.State {
+
+    init(parentDirectory: URL, createdAt: Date) throws {
+        let id = UUID().uuidString
+        @Injected var fileManager: FileManager
+        let directoryURL = parentDirectory.appending(path: id, directoryHint: .isDirectory)
+        try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: false)
+        self.init(directory: directoryURL, id: id, createdAt: createdAt, updatedAt: createdAt)
+    }
+}

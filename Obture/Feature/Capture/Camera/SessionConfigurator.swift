@@ -21,11 +21,10 @@ protocol SessionConfigurator: AnyObject {
     func stop(_ session: AVCaptureSession, queue: DispatchQueue) -> Future<Void, CameraSession.Error>
 }
 
-
 protocol PhotoTaker: AnyObject {
     var inProgressPhotoCaptureDelegates: [UUID: PhotoCaptureDelegate] { get set }
     func takePhoto(_ session: AVCaptureSession,
                    queue: DispatchQueue,
                    from photoOutput: AVCapturePhotoOutput,
-                   motionManager: CMMotionManager) -> Future<URL, Error>
+                   motionManager: CMMotionManager) -> Future<CapturedPhoto, Error>
 }

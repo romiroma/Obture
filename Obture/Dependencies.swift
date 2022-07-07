@@ -86,10 +86,12 @@ extension Resolver {
         r.register(Motion.Environment.self, factory: Motion.Environment.init)
         r.register(CameraSession.Environment.self, factory: CameraSession.Environment.init)
         r.register(Camera.Environment.self, factory: Camera.Environment.init)
-        r.register(NewProject.Environment.self, factory: NewProject.Environment.init)
+        r.register(ProjectEdit.Environment.self, factory: ProjectEdit.Environment.init)
+        r.register(ProjectEdit.SubNode.Environment.self, factory: ProjectEdit.SubNode.Environment.init)
         r.register(Capture.Environment.self, factory: Capture.Environment.init)
         r.register(SessionConfigurator.self, factory: SessionConfiguratorImpl.init)
 
+        r.register(CapturedPhotoWriter.self, factory: CapturedPhotoWriterImpl.init)
         return r
     }
 }
@@ -190,7 +192,7 @@ extension PhotoTaker {
     func takePhoto(_ session: AVCaptureSession,
                    queue: DispatchQueue,
                    from photoOutput: AVCapturePhotoOutput,
-                   motionManager: CMMotionManager) -> Future<URL, Error> {
+                   motionManager: CMMotionManager) -> Future<CapturedPhoto, Error> {
         let videoPreviewLayerOrientation = session.connections[0].videoOrientation
         weak var weakSelf = self
         return .init { promise in
@@ -251,10 +253,18 @@ extension PhotoTaker {
                     willCapturePhotoAnimation: {
                         logger.info("animation")
                     },
-                    completionHandler: { photoCaptureProcessor in
+                    completionHandler: { result in
                         // When the capture is complete, remove the reference to the
                         // completed photo capture delegate.
-                        promise(.success(URL(string: "http://google.com")!))
+                        switch result {
+                        case .success((let photo, let depthMapData?, let gravity?)):
+                            promise(.success(.init(photo: photo, depthMapData: depthMapData, gravity: gravity)))
+                        case .success:
+                            promise(.failure(NSError()))
+                        case .failure(let error):
+                            promise(.failure(error))
+                        }
+
                         queue.async {
                             guard let self = weakSelf else { return }
                             self.inProgressPhotoCaptureDelegates.removeValue(

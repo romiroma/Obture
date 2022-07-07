@@ -38,7 +38,7 @@ enum CameraSession {
         case stop(StopReason)
         case didStop(StopReason)
         case takePhoto
-        case tookPhoto(URL)
+        case tookPhoto(CapturedPhoto)
     }
 
     struct Environment {
@@ -79,7 +79,12 @@ enum CameraSession {
         case .didStart:
             state = .running(environment.session)
         case .failure(let error):
-            state = .none
+            switch error {
+            case .configurationError:
+                state = .none
+            case .photoCaptureError:
+                break
+            }
         case .start:
             return environment.sessionConfigurator
                 .start(environment.session, queue: environment.queue)
@@ -115,8 +120,8 @@ enum CameraSession {
             .receive(on: DispatchQueue.main.eraseToAnyScheduler())
             .catchToEffect { result in
                 switch result {
-                case let .success(url):
-                    return Action.tookPhoto(url)
+                case let .success(photo):
+                    return Action.tookPhoto(photo)
                 case .failure(let failure):
                     return Action.failure(.photoCaptureError)
                 }

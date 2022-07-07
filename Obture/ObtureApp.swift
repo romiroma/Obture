@@ -20,14 +20,16 @@ struct ObtureApp: App {
     var body: some Scene {
         WithViewStore(store) { viewStore in
             WindowGroup {
-                SwitchStore(store) {
-                    CaseLet(state: /Obture.State.getStarted, action: Obture.Action.getStarted) { getStartedStore in
-                        GetStartedView(store: getStartedStore)
+//                NavigationStack {
+                    SwitchStore(store) {
+                        CaseLet(state: /Obture.State.getStarted, action: Obture.Action.getStarted) { getStartedStore in
+                            GetStartedView(store: getStartedStore)
+                        }
+                        CaseLet(state: /Obture.State.capture, action: Obture.Action.capture) { captureStore in
+                            CaptureView(store: captureStore)
+                        }
                     }
-                    CaseLet(state: /Obture.State.capture, action: Obture.Action.capture) { captureStore in
-                        CaptureView(store: captureStore)
-                    }
-                }
+//                }
             }.onChange(of: scenePhase) { newValue in
                 switch newValue {
                 case .active:
