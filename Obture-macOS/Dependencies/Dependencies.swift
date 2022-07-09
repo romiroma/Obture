@@ -15,6 +15,7 @@ import Files
 import os
 import AppKit
 import ImageIO
+import Preview
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture",
                             category: "SessionConfigurator/PhotoTaker/Dependencies")
