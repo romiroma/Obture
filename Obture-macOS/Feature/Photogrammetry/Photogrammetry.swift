@@ -54,7 +54,8 @@ enum Photogrammetry {
             }
             environment.sessionHolder.session = session
             do {
-                try session.process(requests: [.modelFile(url: url.appendingPathComponent("object", conformingTo: .usdz), detail: .raw)])
+                try session.process(requests: [.modelFile(url: url.appendingPathComponent("object", conformingTo: .usdz),
+                                                          detail: .raw)])
             } catch {
                 state = .failure(.sessionError(error))
                 break

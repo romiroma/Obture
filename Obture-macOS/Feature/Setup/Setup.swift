@@ -8,6 +8,7 @@
 import ComposableArchitecture
 import Common
 import Combine
+import Files
 
 enum Setup {
 
@@ -46,8 +47,10 @@ enum Setup {
         .init { state, action, environment in
             switch action {
             case .fileSelection(.selected(let url)):
-                state = .unpack(.idle(input: url))
-                return .init(value: .unpack(.start))
+                if url.pathExtension == "zip" {
+                    state = .unpack(.idle(input: url))
+                    return .init(value: .unpack(.start))
+                }
             case .unpack(.finished(let unpackedFolder)):
                 state = .photogrammetry(.idle(directory: unpackedFolder))
                 return .init(value: Action.photogrammetry(.start))

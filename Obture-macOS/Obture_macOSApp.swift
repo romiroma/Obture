@@ -25,8 +25,11 @@ struct Obture_macOSApp: App {
                     CaseLet(state: /Obture.State.setup, action: Obture.Action.setup) { setupStore in
                         SetupView(store: setupStore)
                     }
+                    CaseLet(state: /Obture.State.preview, action: Obture.Action.preview) { previewStore in
+                        PreviewView(store: previewStore)
+                    }
                     Default {
-                        Circle()
+                        Rectangle()
                     }
                 }
             }.onChange(of: scenePhase) { newValue in

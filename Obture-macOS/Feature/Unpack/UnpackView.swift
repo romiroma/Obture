@@ -16,9 +16,9 @@ struct UnpackView: View {
         WithViewStore(store) { viewStore in
             switch viewStore.state {
             case .idle(let url):
-                Text(url.lastPathComponent)
+                ProgressView(url.lastPathComponent)
             case .inProgress(input: let url, value: let value):
-                Text(url.lastPathComponent + " : " + (value * 100).description + "%")
+                ProgressView("Extracting... \(url.lastPathComponent)")
             case .failed(let error):
                 Text(error.localizedDescription)
             case .done(let output):
