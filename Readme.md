@@ -7,6 +7,6 @@
 
 
 ## Roadmap
-* --> [Value] Creating project
-* [Value] Generating preview
-* [Tech debt] Structurize features by Swift packages and Domain/UI/Platform subpackages
+* √ [Value] Creating project
+* √ [Value] Generating previe
+* --> [Tech debt] Structurize features by Swift packages and Domain/UI/Platform subpackages
