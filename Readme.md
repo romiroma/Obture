@@ -7,8 +7,4 @@
 
 
 ## Roadmap
-* √ [Value] Creating project
-* √ [Value] Generating previe
-* --> [Tech debt] Structurize Preview feature for iOS and Mac OS targets;
-* PhotogrammetrySession settings
-* Navigation
+TBD
