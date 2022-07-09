@@ -11,6 +11,7 @@ import Combine
 import CoreLocation
 import CoreMotion
 import Project
+import Node
 import Common
 
 enum CameraSession {

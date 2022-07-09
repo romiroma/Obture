@@ -1,55 +1,41 @@
 //
-//  CapturedPhoto.swift
+//  Node.CapturedPhotoWriterImpl.swift
 //  Obture
 //
-//  Created by Roman on 06.07.2022.
+//  Created by Roman on 07.07.2022.
 //
 
-import Foundation
-import AVFoundation
+import Common
 import Combine
-import CoreMotion
-
-public struct CapturedPhoto: Equatable {
-    public static func == (lhs: CapturedPhoto, rhs: CapturedPhoto) -> Bool {
-        return lhs.photo === rhs.photo
-    }
-
-    public let photo: AVCapturePhoto
-    public let depthMapData: Data
-    public let gravity: CMAcceleration
-
-    public let createdAt: Date = .init()
-
-    public init(photo: AVCapturePhoto, depthMapData: Data, gravity: CMAcceleration) {
-        self.photo = photo
-        self.depthMapData = depthMapData
-        self.gravity = gravity
-    }
-}
-
-public protocol CapturedPhotoWriter: AnyObject {
-    func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Swift.Error>
-}
-
+import Foundation
+import Project
+import Node
 import os
+import AVFoundation
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture.CapturedPhotoWriterImpl", category: "CapturedPhotoWriterImpl")
 
-public class CapturedPhotoWriterImpl: CapturedPhotoWriter {
 
-    public init() {}
+class CapturedFileDataRepresentationCustomizer: NSObject, AVCapturePhotoFileDataRepresentationCustomizer {
+    func replacementDepthData(for photo: AVCapturePhoto) -> AVDepthData? {
+        return photo.depthData
+    }
+}
 
-    public enum Error: Swift.Error {
+class CapturedPhotoWriterImpl: CapturedPhotoWriter {
+
+    init() {}
+
+    enum Error: Swift.Error {
         case cantWritePhotoData(Swift.Error)
         case cantWriteDepthData(Swift.Error)
         case cantWriteGravityData(Swift.Error)
         case noPhotoFileDataRepresentation
     }
 
-    public func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Swift.Error> {
+    func write(_ photo: CapturedPhoto, to folder: URL) -> Future<Void, Swift.Error> {
         return .init { promise in
-            guard let photoFileData = photo.photo.fileDataRepresentation() else {
+            guard let photoFileData = photo.photo.fileDataRepresentation(with: CapturedFileDataRepresentationCustomizer()) else {
                 promise(.failure(Error.noPhotoFileDataRepresentation))
                 return
             }
@@ -88,3 +74,4 @@ public class CapturedPhotoWriterImpl: CapturedPhotoWriter {
         }
     }
 }
+

@@ -9,6 +9,7 @@ import AVFoundation
 import Combine
 import CoreMotion
 import Project
+import Node
 import os
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture",

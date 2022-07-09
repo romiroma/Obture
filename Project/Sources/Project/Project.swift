@@ -11,6 +11,7 @@ import CoreMotion
 import Combine
 import Common
 import os
+import Node
 
 private let logger = Logger(subsystem: "com.andrykevych.Obture",
                             category: "Project")
@@ -28,7 +29,7 @@ public struct State: Identifiable, Equatable, Codable {
     public var createdAt: Date
     public var updatedAt: Date
 
-    public var subnodes: IdentifiedArrayOf<Project.SubNode.State>
+    public var subnodes: IdentifiedArrayOf<Node.State>
 
     public var export: URL?
 
@@ -36,7 +37,7 @@ public struct State: Identifiable, Equatable, Codable {
                 id: String,
                 createdAt: Date,
                 updatedAt: Date,
-                subnodes: IdentifiedArrayOf<Project.SubNode.State>,
+                subnodes: IdentifiedArrayOf<Node.State>,
                 export: URL?) {
         self.directory = directory
         self.id = id
@@ -50,7 +51,7 @@ public struct State: Identifiable, Equatable, Codable {
 public enum Action: Equatable {
     case add(CapturedPhoto)
     case failure(Error)
-    case subnode(id: Project.SubNode.State.ID, action: Project.SubNode.Action)
+    case subnode(id: Node.State.ID, action: Node.Action)
     case export
     case exported(URL)
 
@@ -60,21 +61,21 @@ public enum Action: Equatable {
 }
 
 public struct Environment {
-    @Injected var subnode: SubNode.Environment
+    @Injected var subnode: Node.Environment
     @Injected var exporter: Exporter
 
     public init() {}
 }
 
 public let reducer: Reducer<State, Action, Environment> = .combine(
-    Project.SubNode.reducer.forEach(state: \.subnodes,
+    Node.reducer.forEach(state: \.subnodes,
                                     action: /Action.subnode(id:action:),
                                     environment: \.subnode),
     .init { state, action, environment in
         switch action {
         case let .add(captured):
             do {
-                let subnode: SubNode.State = try .init(parentDirectory: state.directory, createdAt: captured.createdAt)
+                let subnode: Node.State = try .init(parentDirectory: state.directory, createdAt: captured.createdAt)
                 state.subnodes.append(subnode)
                 state.export = nil
                 return .init(value: .subnode(id: subnode.id, action: .write(captured)))
