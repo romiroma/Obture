@@ -8,6 +8,7 @@
 import SwiftUI
 import SceneKit
 import ComposableArchitecture
+import Preview
 
 struct PreviewView: View {
 
@@ -22,14 +23,13 @@ struct PreviewView: View {
         WithViewStore(store) { viewStore in
             ZStack {
                 if let scene = viewStore.scene {
-                    ZStack {
+                    VStack {
                         SceneView(
                             scene: scene,
                             pointOfView: cameraNode,
                             options: [.allowsCameraControl, .autoenablesDefaultLighting ,.jitteringEnabled]
                         )
                         VStack {
-                            Spacer()
                             Toggle("Enable Wireframe",
                                    isOn: viewStore.binding(get: \.isWireframeViewEnabled, send: { previewState in
                                     .setWireframeView(active: previewState)

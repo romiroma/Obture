@@ -27,8 +27,9 @@
 		5D48C4812876E2DF00082591 /* Node.CapturedPhotoWriterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D48C4802876E2DF00082591 /* Node.CapturedPhotoWriterImpl.swift */; };
 		5D48C4832876E31E00082591 /* Node in Frameworks */ = {isa = PBXBuildFile; productRef = 5D48C4822876E31E00082591 /* Node */; };
 		5D497BBA28776DEC009E2E7C /* PhotogrammetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D497BB928776DEC009E2E7C /* PhotogrammetryView.swift */; };
-		5D6A271B2879F7B300D96552 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A271A2879F7B300D96552 /* Preview.swift */; };
 		5D6A271D2879F96E00D96552 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A271C2879F96E00D96552 /* PreviewView.swift */; };
+		5D6A2724287A361A00D96552 /* Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 5D6A2723287A361A00D96552 /* Preview */; };
+		5D6A2726287A361A00D96552 /* ViewSettings in Frameworks */ = {isa = PBXBuildFile; productRef = 5D6A2725287A361A00D96552 /* ViewSettings */; };
 		5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AB31C286FFDFC0060142B /* CameraSession.swift */; };
 		5D7E63EE287998F6008D4175 /* ExifMetadataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */; };
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
@@ -87,8 +88,8 @@
 		5D497BB928776DEC009E2E7C /* PhotogrammetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotogrammetryView.swift; sourceTree = "<group>"; };
 		5D4CE32E28761E4000F7F428 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealityKit.framework; sourceTree = "<group>"; };
 		5D4CE32F28761E4000F7F428 /* RealityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealityFoundation.framework; sourceTree = "<group>"; };
-		5D6A271A2879F7B300D96552 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		5D6A271C2879F96E00D96552 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		5D6A2722287A342600D96552 /* Preview */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Preview; sourceTree = "<group>"; };
 		5D6AB31C286FFDFC0060142B /* CameraSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSession.swift; sourceTree = "<group>"; };
 		5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifMetadataExtract.swift; sourceTree = "<group>"; };
 		5DAEA452287059500001791A /* SessionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfigurator.swift; sourceTree = "<group>"; };
@@ -135,8 +136,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D6A2726287A361A00D96552 /* ViewSettings in Frameworks */,
 				5DC464CB28775FBE0069F647 /* Files in Frameworks */,
 				5DBC6E742876E5C800F66586 /* Project in Frameworks */,
+				5D6A2724287A361A00D96552 /* Preview in Frameworks */,
 				5DBC6E722876E5C800F66586 /* Node in Frameworks */,
 				5DBC6E762876E5C800F66586 /* ComposableArchitecture in Frameworks */,
 				5DBC6E702876E5C800F66586 /* Common in Frameworks */,
@@ -160,6 +163,7 @@
 		5D3E3A6E286C8BC00053D597 = {
 			isa = PBXGroup;
 			children = (
+				5D6A2722287A342600D96552 /* Preview */,
 				5D4083A12876D776000BB24F /* Common */,
 				5D4083A02876D6B0000BB24F /* Project */,
 				5D1DAE382873651300E836AB /* Readme.md */,
@@ -261,7 +265,6 @@
 		5D6A27192879F45E00D96552 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
-				5D6A271A2879F7B300D96552 /* Preview.swift */,
 				5D6A271C2879F96E00D96552 /* PreviewView.swift */,
 			);
 			path = Preview;
@@ -404,6 +407,8 @@
 				5DBC6E752876E5C800F66586 /* ComposableArchitecture */,
 				5DC464C5287727430069F647 /* ZIPFoundation */,
 				5DC464CA28775FBE0069F647 /* Files */,
+				5D6A2723287A361A00D96552 /* Preview */,
+				5D6A2725287A361A00D96552 /* ViewSettings */,
 			);
 			productName = "Obture-macOS";
 			productReference = 5DBC6E602876E5AB00F66586 /* Obture-macOS.app */;
@@ -516,7 +521,6 @@
 				5DBC6E862876EACC00F66586 /* SetupView.swift in Sources */,
 				5DBC6E8C2876F09000F66586 /* Photogrammetry.swift in Sources */,
 				5D497BBA28776DEC009E2E7C /* PhotogrammetryView.swift in Sources */,
-				5D6A271B2879F7B300D96552 /* Preview.swift in Sources */,
 				5DBC6E872876ED8F00F66586 /* Dependencies.swift in Sources */,
 				5D6A271D2879F96E00D96552 /* PreviewView.swift in Sources */,
 				5DBC6E942876F87C00F66586 /* Unpack.swift in Sources */,
@@ -861,6 +865,14 @@
 		5D48C4822876E31E00082591 /* Node */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Node;
+		};
+		5D6A2723287A361A00D96552 /* Preview */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Preview;
+		};
+		5D6A2725287A361A00D96552 /* ViewSettings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ViewSettings;
 		};
 		5DBC6E6F2876E5C800F66586 /* Common */ = {
 			isa = XCSwiftPackageProductDependency;
