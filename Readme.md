@@ -9,4 +9,6 @@
 ## Roadmap
 * √ [Value] Creating project
 * √ [Value] Generating previe
-* --> [Tech debt] Structurize features by Swift packages and Domain/UI/Platform subpackages
+* --> [Tech debt] Structurize Preview feature for iOS and Mac OS targets;
+* PhotogrammetrySession settings
+* Navigation
