@@ -24,7 +24,7 @@ public struct State: Identifiable, Equatable, Codable {
 }
 
 
-public enum Action: Equatable {
+public enum Action {
     case write(CapturedPhoto)
     case didWrite(CapturedPhoto)
     case failure(CapturedPhoto, Error)

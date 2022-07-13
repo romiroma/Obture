@@ -17,7 +17,7 @@ enum Permissions {
 
     typealias State = AVAuthorizationStatus?
 
-    enum Action: Equatable {
+    enum Action {
         case getStatus
         case gotStatus(AVAuthorizationStatus)
         case requestAccess

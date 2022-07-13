@@ -17,7 +17,7 @@ enum Obture {
         case preview(Preview.State)
     }
 
-    enum Action: Equatable {
+    enum Action {
         
         // Main Scene Lifecycle
         case active

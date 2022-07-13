@@ -22,7 +22,7 @@ enum Setup {
         case photogrammetry(Photogrammetry.State)
     }
 
-    enum Action: Equatable {
+    enum Action {
         case fileSelection(FileSelection.Action)
         case unpack(Unpack.Action)
         case photogrammetry(Photogrammetry.Action)

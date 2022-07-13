@@ -35,7 +35,7 @@
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
 		5DAEA4552870722B0001791A /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA4542870722B0001791A /* CameraPreviewView.swift */; };
 		5DAEA45728715D710001791A /* CameraSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA45628715D710001791A /* CameraSessionView.swift */; };
-		5DB15C702877755100A95EFD /* NSImage+PhotogrammetrySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB15C6F2877755100A95EFD /* NSImage+PhotogrammetrySession.swift */; };
+		5DB15C702877755100A95EFD /* CIImage+PhotogrammetrySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB15C6F2877755100A95EFD /* CIImage+PhotogrammetrySession.swift */; };
 		5DB31D572872B2A100B159F5 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB31D562872B2A100B159F5 /* CaptureButton.swift */; };
 		5DB31D592872E19D00B159F5 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB31D582872E19D00B159F5 /* PhotoCaptureDelegate.swift */; };
 		5DB31D5C2872F4CE00B159F5 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB31D5B2872F4CE00B159F5 /* Motion.swift */; };
@@ -95,7 +95,7 @@
 		5DAEA452287059500001791A /* SessionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfigurator.swift; sourceTree = "<group>"; };
 		5DAEA4542870722B0001791A /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		5DAEA45628715D710001791A /* CameraSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSessionView.swift; sourceTree = "<group>"; };
-		5DB15C6F2877755100A95EFD /* NSImage+PhotogrammetrySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PhotogrammetrySession.swift"; sourceTree = "<group>"; };
+		5DB15C6F2877755100A95EFD /* CIImage+PhotogrammetrySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+PhotogrammetrySession.swift"; sourceTree = "<group>"; };
 		5DB31D562872B2A100B159F5 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
 		5DB31D582872E19D00B159F5 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		5DB31D5B2872F4CE00B159F5 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 			children = (
 				5DBC6E782876E7D100F66586 /* Dependencies.swift */,
 				5DC464CE287769B60069F647 /* Photogrammetry.SessionHolderImpl.swift */,
-				5DB15C6F2877755100A95EFD /* NSImage+PhotogrammetrySession.swift */,
+				5DB15C6F2877755100A95EFD /* CIImage+PhotogrammetrySession.swift */,
 				5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */,
 			);
 			path = Dependencies;
@@ -516,7 +516,7 @@
 				5DBC6E7F2876E98C00F66586 /* Obture.swift in Sources */,
 				5DBC6E822876EABE00F66586 /* Setup.swift in Sources */,
 				5DC464CD287763540069F647 /* SessionHolder.swift in Sources */,
-				5DB15C702877755100A95EFD /* NSImage+PhotogrammetrySession.swift in Sources */,
+				5DB15C702877755100A95EFD /* CIImage+PhotogrammetrySession.swift in Sources */,
 				5DBC6E912876F4E100F66586 /* FileSelectionView.swift in Sources */,
 				5DBC6E862876EACC00F66586 /* SetupView.swift in Sources */,
 				5DBC6E8C2876F09000F66586 /* Photogrammetry.swift in Sources */,

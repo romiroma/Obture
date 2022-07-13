@@ -16,7 +16,7 @@ public struct State: Equatable {
     }
 }
 
-public enum Action: Equatable {
+public enum Action {
     case appear
     case setWireframeView(active: Bool)
 }

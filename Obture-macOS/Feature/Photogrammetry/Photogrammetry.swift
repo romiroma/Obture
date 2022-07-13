@@ -17,6 +17,7 @@ enum Photogrammetry {
         }
 
         case sessionError(any Swift.Error)
+        case samplesError(any Swift.Error)
     }
 
     enum State: Equatable {
@@ -26,8 +27,9 @@ enum Photogrammetry {
         case completed(URL)
     }
 
-    enum Action: Equatable {
+    enum Action {
         case start
+        case samplesPrepared(fromURL: URL, any Sequence<PhotogrammetrySample>)
         case started
         case completed(URL)
         case failed(Error)
@@ -38,15 +40,32 @@ enum Photogrammetry {
         @Injected(name: "samplesFromDirectory") var samplesFromDirectory: (URL) -> any Sequence<PhotogrammetrySample>
         @Injected var sessionHolder: SessionHolder
         @Injected(name: "openResult") var open: (URL) -> Void
+        let mainQueue: DispatchQueue = .main
+        let samplesQueue: DispatchQueue = .init(label: "com.andrykevych.Obture.PhotogrammetrySetup.samples", qos: .userInitiated)
     }
 
     static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
         switch action {
         case .start:
             guard case let .idle(url) = state else { break }
+            return Future { (promise: @escaping Future<any Sequence<PhotogrammetrySample>, Never>.Promise) in
+                environment.samplesQueue.async {
+                    let samples = environment.samplesFromDirectory(url)
+                    promise(.success(samples))
+                }
+            }
+            .receive(on: environment.mainQueue)
+            .catchToEffect { result in
+                switch result {
+                case .success(let sequence):
+                    return Action.samplesPrepared(fromURL: url, sequence)
+                case .failure(let error):
+                    return Action.failed(.samplesError(error))
+                }
+            }
+        case .samplesPrepared(let url, let samples):
             let session: PhotogrammetrySession
             do {
-                let samples = environment.samplesFromDirectory(url)
                 session = try PhotogrammetrySession(input: samples)
             } catch {
                 state = .failure(.sessionError(error))
@@ -60,8 +79,6 @@ enum Photogrammetry {
                 state = .failure(.sessionError(error))
                 break
             }
-
-            let queue: DispatchQueue = .main
             return Effect<Action, Never>.run { (s: Effect<Action, Never>.Subscriber) in
                 Task {
                     do {
@@ -70,13 +87,13 @@ enum Photogrammetry {
                             case .processingComplete:
                                 print("processingComplete")
                             case .requestError(let request, let error):
-                                queue.async {
+                                environment.mainQueue.async {
                                     s.send(.failed(.sessionError(error)))
                                 }
                             case .requestComplete(let request, let result):
                                 switch result {
                                 case .modelFile(let url):
-                                    queue.async {
+                                    environment.mainQueue.async {
                                         s.send(.completed(url))
                                     }
                                 default:
@@ -84,8 +101,8 @@ enum Photogrammetry {
                                 }
                             case .requestProgress(let request, let fractionComplete):
                                 break
-                            case .inputComplete:  // data ingestion only!
-                                queue.async {
+                            case .inputComplete:
+                                environment.mainQueue.async {
                                     s.send(.started)
                                 }
                             case .invalidSample(let id, let reason):

@@ -15,7 +15,7 @@ public struct State: Equatable {
     
 }
 
-public enum Action: Equatable {}
+public enum Action {}
 
 public struct Environment {}
 
