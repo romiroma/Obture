@@ -10,7 +10,7 @@ import ComposableArchitecture
 enum GetStarted {
     struct State: Equatable {}
 
-    enum Action: Equatable {
+    enum Action {
         case appear
         case `continue`
     }

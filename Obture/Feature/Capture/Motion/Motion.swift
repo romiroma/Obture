@@ -18,7 +18,7 @@ enum Motion {
         case stopping
     }
 
-    enum Action: Equatable {
+    enum Action {
         case start
         case started
         case stop

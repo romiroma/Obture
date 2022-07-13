@@ -20,7 +20,7 @@ enum Capture {
         var buttonTitle: String = ""
     }
 
-    enum Action: Equatable {
+    enum Action {
         case appear
         case camera(Camera.Action)
         case motion(Motion.Action)

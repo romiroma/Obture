@@ -22,7 +22,7 @@ enum Unpack {
         case failed(Error)
     }
 
-    enum Action: Equatable {
+    enum Action {
         case start
         case progress(Double)
         case finished(URL)

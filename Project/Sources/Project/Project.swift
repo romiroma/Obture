@@ -48,7 +48,7 @@ public struct State: Identifiable, Equatable, Codable {
     }
 }
 
-public enum Action: Equatable {
+public enum Action {
     case add(CapturedPhoto)
     case failure(Error)
     case subnode(id: Node.State.ID, action: Node.Action)

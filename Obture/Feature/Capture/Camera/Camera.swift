@@ -17,7 +17,7 @@ enum Camera {
         case cameraSession(CameraSession.State)
     }
 
-    enum Action: Equatable {
+    enum Action {
         case appear
         case permissions(Permissions.Action)
         case cameraSession(CameraSession.Action)

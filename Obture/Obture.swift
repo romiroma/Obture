@@ -16,7 +16,7 @@ enum Obture {
         case capture(Capture.State)
     }
 
-    enum Action: Equatable {
+    enum Action {
 
         // Main Scene Lifecycle
         case active

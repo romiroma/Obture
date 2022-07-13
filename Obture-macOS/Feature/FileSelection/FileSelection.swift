@@ -16,7 +16,7 @@ enum FileSelection {
         case selected(URL)
     }
 
-    enum Action: Equatable {
+    enum Action {
         case openDialog
         case selected(URL)
         case dismiss

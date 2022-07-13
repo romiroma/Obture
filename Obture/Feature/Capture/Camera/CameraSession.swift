@@ -32,7 +32,7 @@ enum CameraSession {
         case idle(StopReason)
     }
 
-    enum Action: Equatable {
+    enum Action {
         case setup
         case failure(Error)
         case didSetup
