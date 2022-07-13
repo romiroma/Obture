@@ -96,9 +96,13 @@ extension Resolver {
                           let gravityString = try? gravity?.readAsString(encodedAs: .utf8) else { return nil }
                     
 
-                    if let colorPixelBuffer = NSImage(data: photoData)?.colorPixelBuffer() {
+                    if let colorImage = CIImage(data: photoData),
+                       let colorPixelBuffer = colorImage.colorPixelBuffer() {
                         var sample: PhotogrammetrySample = .init(id: id, image: colorPixelBuffer)
-                        sample.depthDataMap = NSImage(data: depthData)?.disparityPixelBuffer()
+                        if let depthImage = CIImage(data: depthData) {
+                            sample.depthDataMap = depthImage.disparityPixelBuffer()
+                        }
+
 
                         let gravityCoordinatesArray = gravityString
                             .components(separatedBy: ",")
