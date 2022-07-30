@@ -13,19 +13,24 @@ struct SetupView: View {
     let store: Store<Setup.State, Setup.Action>
 
     var body: some View {
-        SwitchStore(store) {
-            CaseLet(state: /Setup.State.fileSelection,
-                    action: Setup.Action.fileSelection) { fileSelectionStore in
-                FileSelectionView(store: fileSelectionStore)
-            }
-            CaseLet(state: /Setup.State.unpack,
-                    action: Setup.Action.unpack) { unpackStore in
-                UnpackView(store: unpackStore)
-            }
-            CaseLet(state: /Setup.State.photogrammetry,
-                    action: Setup.Action.photogrammetry) { photogrammetryStore in
-                PhotogrammetryView(store: photogrammetryStore)
-            }
+        VStack {
+            FileSelectionView(store: store.scope(state: \.fileSelection, action: Setup.Action.fileSelection))
+            UnpackView(store: store.scope(state: \.unpack, action: Setup.Action.unpack))
+            QualityView(store: store.scope(state: \.quality, action: Setup.Action.quality))
         }
+//        SwitchStore(store) {
+//            CaseLet(state: /Setup.State.fileSelection,
+//                    action: Setup.Action.fileSelection) { fileSelectionStore in
+//                FileSelectionView(store: fileSelectionStore)
+//            }
+//            CaseLet(state: /Setup.State.unpack,
+//                    action: Setup.Action.unpack) { unpackStore in
+//
+//            }
+//            CaseLet(state: /Setup.State.quality,
+//                    action: Setup.Action.quality) { qualityStore in
+//                QualityView(store: qualityStore)
+//            }
+//        }
     }
 }

@@ -16,6 +16,7 @@ enum Unpack {
     }
 
     enum State: Equatable {
+        case none
         case idle(input: URL)
         case inProgress(input: URL, value: Double)
         case done(outputFolder: URL)

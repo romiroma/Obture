@@ -33,6 +33,8 @@
 		5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AB31C286FFDFC0060142B /* CameraSession.swift */; };
 		5D75765428954B2F00E2B448 /* Project.WriterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */; };
 		5D7E63EE287998F6008D4175 /* ExifMetadataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */; };
+		5D9EAB942895994300D4DD51 /* Quality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EAB932895994300D4DD51 /* Quality.swift */; };
+		5D9EAB98289599F400D4DD51 /* QualityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EAB97289599F400D4DD51 /* QualityView.swift */; };
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
 		5DAEA4552870722B0001791A /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA4542870722B0001791A /* CameraPreviewView.swift */; };
 		5DAEA45728715D710001791A /* CameraSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA45628715D710001791A /* CameraSessionView.swift */; };
@@ -94,6 +96,8 @@
 		5D6AB31C286FFDFC0060142B /* CameraSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSession.swift; sourceTree = "<group>"; };
 		5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.WriterImpl.swift; sourceTree = "<group>"; };
 		5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifMetadataExtract.swift; sourceTree = "<group>"; };
+		5D9EAB932895994300D4DD51 /* Quality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quality.swift; sourceTree = "<group>"; };
+		5D9EAB97289599F400D4DD51 /* QualityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityView.swift; sourceTree = "<group>"; };
 		5DAEA452287059500001791A /* SessionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfigurator.swift; sourceTree = "<group>"; };
 		5DAEA4542870722B0001791A /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		5DAEA45628715D710001791A /* CameraSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSessionView.swift; sourceTree = "<group>"; };
@@ -273,6 +277,15 @@
 			path = Preview;
 			sourceTree = "<group>";
 		};
+		5D9EAB922895993A00D4DD51 /* Quality */ = {
+			isa = PBXGroup;
+			children = (
+				5D9EAB932895994300D4DD51 /* Quality.swift */,
+				5D9EAB97289599F400D4DD51 /* QualityView.swift */,
+			);
+			path = Quality;
+			sourceTree = "<group>";
+		};
 		5DB31D5A2872F4C200B159F5 /* Motion */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +330,7 @@
 		5DBC6E7D2876E96100F66586 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				5D9EAB922895993A00D4DD51 /* Quality */,
 				5DBC6E922876F87400F66586 /* Unpack */,
 				5DBC6E802876EA9D00F66586 /* Setup */,
 				5DBC6E8D2876F42800F66586 /* FileSelection */,
@@ -515,9 +529,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9EAB942895994300D4DD51 /* Quality.swift in Sources */,
 				5DBC6E8F2876F43E00F66586 /* FileSelection.swift in Sources */,
 				5DC464CF287769B60069F647 /* Photogrammetry.SessionHolderImpl.swift in Sources */,
 				5DBC6E7F2876E98C00F66586 /* Obture.swift in Sources */,
+				5D9EAB98289599F400D4DD51 /* QualityView.swift in Sources */,
 				5DBC6E822876EABE00F66586 /* Setup.swift in Sources */,
 				5DC464CD287763540069F647 /* SessionHolder.swift in Sources */,
 				5DB15C702877755100A95EFD /* CIImage+PhotogrammetrySession.swift in Sources */,

@@ -23,6 +23,8 @@ struct UnpackView: View {
                 Text(error.localizedDescription)
             case .done(let output):
                 Text(" : -> " + output.absoluteString)
+            case .none:
+                EmptyView()
             }
         }
     }

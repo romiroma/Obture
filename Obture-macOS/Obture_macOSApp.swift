@@ -28,6 +28,10 @@ struct Obture_macOSApp: App {
                     CaseLet(state: /Obture.State.preview, action: Obture.Action.preview) { previewStore in
                         PreviewView(store: previewStore)
                     }
+                    CaseLet(state: /Obture.State.photogrammetry,
+                            action: Obture.Action.photogrammetry) { photogrammetryStore in
+                        PhotogrammetryView(store: photogrammetryStore)
+                    }
                     Default {
                         Rectangle()
                     }

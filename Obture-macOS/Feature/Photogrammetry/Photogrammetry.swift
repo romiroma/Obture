@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import RealityKit
+import RealityFoundation
 import Common
 import Combine
 
@@ -123,6 +124,8 @@ enum Photogrammetry {
                 }
             }
             .cancellable(id: "PhotogrammetrySession")
+        case .failed(let error):
+            state = .failure(.samplesError(error))
         case .started:
             state = .inProgress
         case .completed(let url):
@@ -134,8 +137,6 @@ enum Photogrammetry {
             return .fireAndForget {
                 environment.open(url)
             }
-        default:
-            break
         }
         return .none
     }

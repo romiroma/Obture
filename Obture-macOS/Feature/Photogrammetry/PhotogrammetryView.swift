@@ -15,17 +15,21 @@ struct PhotogrammetryView: View {
 
     var body: some View {
         WithViewStore(store) { viewStore in
-            switch viewStore.state {
-            case .idle:
-                ProgressView("Starting Up...")
-            case .inProgress:
-                ProgressView("In Progress...")
-            case .failure(let error):
-                Text(error.localizedDescription).foregroundColor(.red)
-            case .completed:
-                Button("Open Result") {
-                    viewStore.send(.openResult)
+            VStack {
+                switch viewStore.state {
+                case .idle:
+                    ProgressView("Starting Up...")
+                case .inProgress:
+                    ProgressView("In Progress...")
+                case .failure(let error):
+                    Text(error.localizedDescription).foregroundColor(.red)
+                case .completed:
+                    Button("Open Result") {
+                        viewStore.send(.openResult)
+                    }
                 }
+            }.onAppear {
+                viewStore.send(.start)
             }
         }
     }
