@@ -50,13 +50,18 @@ enum Obture {
         .init { state, action, environment in
             switch action {
             case .active where state == .none:
-                state = .setup(.init(fileSelection: .idle, unpack: .none, quality: .full))//.setup(.fileSelection(.idle))
+                state = .setup(.init(fileSelection: .idle, unpack: .none, quality: .full))
             case .photogrammetry(.completed(let url)):
                 state = .preview(.init(modelURL: url))
             case .setup(.fileSelection(.selected(let url))) where url.pathExtension == "usdz":
                 state = .preview(.init(modelURL: url))
             case .setup(.unpack(.finished(let url))):
-                state = .photogrammetry(.idle(directory: url))
+                switch state {
+                case .setup(let setupState):
+                    state = .photogrammetry(.idle(directory: url, quality: setupState.quality))
+                default:
+                    return .none
+                }
             default:
                 break
             }
