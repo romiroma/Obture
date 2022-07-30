@@ -10,5 +10,5 @@ import Combine
 import Common
 
 public protocol Exporter {
-    func export(_ project: State) -> Future<URL, Error>
+    func export(projectDirectory: URL) -> Future<URL, Error>
 }

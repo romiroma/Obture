@@ -53,8 +53,8 @@ enum Capture {
                 return .init(value: .camera(.cameraSession(.takePhoto)))
             case let .camera(.cameraSession(.tookPhoto(photo))):
                 return .init(value: .project(.add(photo)))
-            case .project(.subnode(id: _, action: .didWrite)):
-                state.buttonTitle = .init(describing: state.project.subnodes.count)
+            case .project(.node(id: _, action: .didWrite)):
+                state.buttonTitle = .init(describing: state.project.nodes.count)
             case .photogrammetry:
                 return .init(value: Action.project(.export))
             case .share:

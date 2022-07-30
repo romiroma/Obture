@@ -16,17 +16,16 @@ final class ExporterImpl: Exporter {
 
     let queue: DispatchQueue = .init(label: "com.andrykevych.Obture.Exporter.queue", qos: .userInitiated)
 
-    func export(_ project: State) -> Future<URL, Error> {
-        @Injected var fileManager: FileManager
+    func export(projectDirectory: URL) -> Future<URL, Error> {
         return .init { [weak self] promise in
             self?.queue.async {
                 let fileManager = FileManager.default
-                let destinationURL = project.directory.deletingLastPathComponent().appendingPathComponent("export", conformingTo: .zip)
+                let destinationURL = projectDirectory.deletingLastPathComponent().appendingPathComponent("export", conformingTo: .zip)
                 do {
                     if fileManager.fileExists(atPath: destinationURL.path) {
                         try fileManager.removeItem(at: destinationURL)
                     }
-                    try fileManager.zipItem(at: project.directory,
+                    try fileManager.zipItem(at: projectDirectory,
                                             to: destinationURL)
                 } catch {
                     promise(.failure(.exportError))

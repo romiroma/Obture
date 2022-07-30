@@ -61,6 +61,7 @@ extension Resolver {
             let queue: DispatchQueue = .init(label: "SessionQueue", qos: .utility)
             return queue
         }).scope(.application)
+        r.register(Project.Writer.self, factory: WriterImpl.init)
         r.register(((URL, String) -> URL?).self, name: "createProjectDirectoryClosure") {
             let fileManager: FileManager = r.resolve()
             return {
@@ -82,8 +83,8 @@ extension Resolver {
         r.register(Motion.Environment.self, factory: Motion.Environment.init)
         r.register(CameraSession.Environment.self, factory: CameraSession.Environment.init)
         r.register(Camera.Environment.self, factory: Camera.Environment.init)
-        r.register(Project.Environment.self, factory: Project.Environment.init)
-        r.register(Node.Environment.self, factory: Node.Environment.init)
+        r.register(Project.Environment.self, factory: Project.Environment.init).scope(.unique)
+        r.register(Node.Environment.self, factory: Node.Environment.init).scope(.unique)
         r.register(Capture.Environment.self, factory: Capture.Environment.init)
         r.register(SessionConfigurator.self, factory: SessionConfiguratorImpl.init)
         r.register(Exporter.self, factory: ExporterImpl.init)

@@ -78,11 +78,10 @@ enum Obture {
                 let now = Date()
                 state = .capture(.init(camera: .permissions(.none),
                                        motion: .idle,
-                                       project: .init(directory: projectDir,
-                                                      id: projectId,
+                                       project: .init(id: projectId,
                                                       createdAt: now,
                                                       updatedAt: now,
-                                                      subnodes: [],
+                                                      nodes: [],
                                                       export: nil)))
             default:
                 break
