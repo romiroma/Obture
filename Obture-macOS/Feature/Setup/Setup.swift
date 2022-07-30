@@ -12,48 +12,44 @@ import Files
 
 enum Setup {
 
-    enum Error: Swift.Error, Equatable {
-
-    }
-
-    enum State: Equatable {
-        case fileSelection(FileSelection.State)
-        case unpack(Unpack.State)
-        case photogrammetry(Photogrammetry.State)
+    struct State: Equatable {
+        var fileSelection: FileSelection.State
+        var unpack: Unpack.State
+        var quality: Quality.State
     }
 
     enum Action {
         case fileSelection(FileSelection.Action)
         case unpack(Unpack.Action)
-        case photogrammetry(Photogrammetry.Action)
+        case quality(Quality.Action)
     }
 
     struct Environment {
         @Injected var fileSelection: FileSelection.Environment
         @Injected var unpack: Unpack.Environment
-        @Injected var photogrammetry: Photogrammetry.Environment
+        @Injected var quality: Quality.Environment
     }
 
     static let reducer: Reducer<State, Action, Environment> = .combine(
-        FileSelection.reducer.pullback(state: /Setup.State.fileSelection,
+        FileSelection.reducer.pullback(state: \.fileSelection,
                                        action: /Setup.Action.fileSelection,
                                        environment: \.fileSelection),
-        Unpack.reducer.pullback(state: /Setup.State.unpack,
+        Unpack.reducer.pullback(state: \.unpack,
                                 action: /Setup.Action.unpack,
                                 environment: \.unpack),
-        Photogrammetry.reducer.pullback(state: /Setup.State.photogrammetry,
-                                        action: /Setup.Action.photogrammetry,
-                                        environment: \.photogrammetry),
+        Quality.reducer.pullback(state: \.quality,
+                                action: /Setup.Action.quality,
+                                environment: \.quality),
         .init { state, action, environment in
             switch action {
             case .fileSelection(.selected(let url)):
                 if url.pathExtension == "zip" {
-                    state = .unpack(.idle(input: url))
+                    state.unpack = .idle(input: url)
                     return .init(value: .unpack(.start))
                 }
             case .unpack(.finished(let unpackedFolder)):
-                state = .photogrammetry(.idle(directory: unpackedFolder))
-                return .init(value: Action.photogrammetry(.start))
+                break
+//                state = .photogrammetry(.idle(directory: unpackedFolder))
             default:
                 break
             }

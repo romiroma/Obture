@@ -134,6 +134,7 @@ extension Resolver {
         r.register(Photogrammetry.Environment.self, factory: Photogrammetry.Environment.init)
         r.register(Setup.Environment.self, factory: Setup.Environment.init)
         r.register(Obture.Environment.self, factory: Obture.Environment.init)
+        r.register(Quality.Environment.self, factory: Quality.Environment.init)
         r.register(Preview.Environment.self, factory: Preview.Environment.init)
         return r
     }

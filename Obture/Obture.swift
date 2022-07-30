@@ -69,7 +69,7 @@ enum Obture {
                 case .getStarted:
                     return .none
                 }
-            case .getStarted(.continue):
+            case .getStarted(.appear):
                 let projectId = UUID().uuidString
                 guard let projectDir = environment.createProjectDirectory(environment.projectsDirectory, projectId) else {
 //                    // TODO: handle such state

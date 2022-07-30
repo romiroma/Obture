@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import RealityKit
+import RealityFoundation
 import Common
 import Combine
 
@@ -21,7 +22,7 @@ enum Photogrammetry {
     }
 
     enum State: Equatable {
-        case idle(directory: URL)
+        case idle(directory: URL, quality: Quality.State)
         case inProgress
         case failure(Error)
         case completed(URL)
@@ -29,7 +30,7 @@ enum Photogrammetry {
 
     enum Action {
         case start
-        case samplesPrepared(fromURL: URL, any Sequence<PhotogrammetrySample>)
+        case samplesPrepared(fromURL: URL, any Sequence<PhotogrammetrySample>, quality: Quality.State)
         case started
         case completed(URL)
         case failed(Error)
@@ -47,7 +48,7 @@ enum Photogrammetry {
     static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
         switch action {
         case .start:
-            guard case let .idle(url) = state else { break }
+            guard case let .idle(url, quality) = state else { break }
             return Future { (promise: @escaping Future<any Sequence<PhotogrammetrySample>, Never>.Promise) in
                 environment.samplesQueue.async {
                     let samples = environment.samplesFromDirectory(url)
@@ -58,12 +59,12 @@ enum Photogrammetry {
             .catchToEffect { result in
                 switch result {
                 case .success(let sequence):
-                    return Action.samplesPrepared(fromURL: url, sequence)
+                    return Action.samplesPrepared(fromURL: url, sequence, quality: quality)
                 case .failure(let error):
                     return Action.failed(.samplesError(error))
                 }
             }
-        case .samplesPrepared(let url, let samples):
+        case .samplesPrepared(let url, let samples, let quality):
             let session: PhotogrammetrySession
             do {
                 session = try PhotogrammetrySession(input: samples)
@@ -74,7 +75,7 @@ enum Photogrammetry {
             environment.sessionHolder.session = session
             do {
                 try session.process(requests: [.modelFile(url: url.appendingPathComponent("object", conformingTo: .usdz),
-                                                          detail: .raw)])
+                                                          detail: quality)])
             } catch {
                 state = .failure(.sessionError(error))
                 break
@@ -123,6 +124,8 @@ enum Photogrammetry {
                 }
             }
             .cancellable(id: "PhotogrammetrySession")
+        case .failed(let error):
+            state = .failure(.samplesError(error))
         case .started:
             state = .inProgress
         case .completed(let url):
@@ -134,8 +137,6 @@ enum Photogrammetry {
             return .fireAndForget {
                 environment.open(url)
             }
-        default:
-            break
         }
         return .none
     }
