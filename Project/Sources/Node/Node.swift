@@ -17,10 +17,21 @@ public enum Error: Equatable, Swift.Error {
 }
 
 public struct State: Identifiable, Equatable, Codable {
-    public let directory: URL
     public var id: String
     public var createdAt: Date
     public var updatedAt: Date
+    public var photo: String = "photo"
+    public var depth: String = "depth"
+    public var gravity: String = "gravity"
+
+    public init(id: String,
+                createdAt: Date,
+                updatedAt: Date,
+                directory: URL) {
+        self.id = id
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
 }
 
 
@@ -30,8 +41,10 @@ public enum Action {
     case failure(CapturedPhoto, Error)
 }
 
-public struct Environment {
+public class Environment {
     @Injected var writer: CapturedPhotoWriter
+
+    public var projectDirectory: URL?
 
     public init() {}
 }
@@ -39,7 +52,10 @@ public struct Environment {
 public let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
     switch action {
     case .write(let photo):
-        return environment.writer.write(photo, to: state.directory)
+        guard let directory = environment.projectDirectory?.appendingPathComponent(state.id, conformingTo: .folder) else {
+            return .none
+        }
+        return environment.writer.write(photo, to: directory)
             .receive(on: DispatchQueue.main.eraseToAnyScheduler())
             .catchToEffect { result in
                 switch result {
@@ -47,7 +63,6 @@ public let reducer: Reducer<State, Action, Environment> = .init { state, action,
                     return .didWrite(photo)
                 case .failure:
                     return .failure(photo, .writeFailure)
-
                 }
             }
     case .didWrite(_):
@@ -60,11 +75,11 @@ public let reducer: Reducer<State, Action, Environment> = .init { state, action,
 
 public extension State {
 
-    init(parentDirectory: URL, createdAt: Date) throws {
-        let id = UUID().uuidString
-        @Injected var fileManager: FileManager
-        let directoryURL = parentDirectory.appending(path: id, directoryHint: .isDirectory)
-        try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: false)
-        self.init(directory: directoryURL, id: id, createdAt: createdAt, updatedAt: createdAt)
-    }
+//    init(parentDirectory: URL, id: Int, createdAt: Date) throws {
+//        let id = UUID().uuidString
+//        @Injected var fileManager: FileManager
+//        let directoryURL = parentDirectory.appending(path: id, directoryHint: .isDirectory)
+//        try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: false)
+//        self.init(directory: directoryURL, id: id, createdAt: createdAt, updatedAt: createdAt)
+//    }
 }

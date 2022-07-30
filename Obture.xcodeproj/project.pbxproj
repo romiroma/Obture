@@ -31,6 +31,7 @@
 		5D6A2724287A361A00D96552 /* Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 5D6A2723287A361A00D96552 /* Preview */; };
 		5D6A2726287A361A00D96552 /* ViewSettings in Frameworks */ = {isa = PBXBuildFile; productRef = 5D6A2725287A361A00D96552 /* ViewSettings */; };
 		5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AB31C286FFDFC0060142B /* CameraSession.swift */; };
+		5D75765428954B2F00E2B448 /* Project.WriterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */; };
 		5D7E63EE287998F6008D4175 /* ExifMetadataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */; };
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
 		5DAEA4552870722B0001791A /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA4542870722B0001791A /* CameraPreviewView.swift */; };
@@ -91,6 +92,7 @@
 		5D6A271C2879F96E00D96552 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		5D6A2722287A342600D96552 /* Preview */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Preview; sourceTree = "<group>"; };
 		5D6AB31C286FFDFC0060142B /* CameraSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSession.swift; sourceTree = "<group>"; };
+		5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.WriterImpl.swift; sourceTree = "<group>"; };
 		5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifMetadataExtract.swift; sourceTree = "<group>"; };
 		5DAEA452287059500001791A /* SessionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfigurator.swift; sourceTree = "<group>"; };
 		5DAEA4542870722B0001791A /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				5DBC6E792876E81A00F66586 /* CameraSession.SessionConfigurator.swift */,
 				5DBC6E7B2876E8DE00F66586 /* CameraSession.PhotoTaker.swift */,
 				5DB31D582872E19D00B159F5 /* PhotoCaptureDelegate.swift */,
+				5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				5D3E3AB0286F5DED0053D597 /* Camera.swift in Sources */,
 				5DB31D5C2872F4CE00B159F5 /* Motion.swift in Sources */,
 				5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */,
+				5D75765428954B2F00E2B448 /* Project.WriterImpl.swift in Sources */,
 				5DBC6E7A2876E81A00F66586 /* CameraSession.SessionConfigurator.swift in Sources */,
 				5D48C4812876E2DF00082591 /* Node.CapturedPhotoWriterImpl.swift in Sources */,
 				5D3E3A91286C8F8E0053D597 /* GetStarted.swift in Sources */,
