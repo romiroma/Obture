@@ -50,9 +50,10 @@ enum Capture {
             case .appear:
                 return .init(value: .motion(.start))
             case .takePhoto:
-                return .init(value: .camera(.cameraSession(.takePhoto)))
-            case let .camera(.cameraSession(.tookPhoto(photo))):
-                return .init(value: .project(.add(photo)))
+//                return .init(value: .camera(.cameraSession(.takePhoto)))
+                break
+//            case let .camera(.cameraSession(.tookPhoto(photo))):
+//                return .init(value: .project(.add(photo)))
             case .project(.node(id: _, action: .didWrite)):
                 state.buttonTitle = .init(describing: state.project.nodes.count)
             case .photogrammetry:

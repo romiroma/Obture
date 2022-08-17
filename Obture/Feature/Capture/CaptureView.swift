@@ -14,23 +14,24 @@ struct CaptureView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ZStack {
-                CameraView(store: store.scope(state: \.camera, action: Capture.Action.camera))
-                    .edgesIgnoringSafeArea(.all)
+                
+//                CameraView(store: store.scope(state: \.camera, action: Capture.Action.camera))
+//                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
-                        CaptureButton(store: store)
-                            .frame(alignment: .center)
-                        if viewStore.state.project.export == nil {
-                            Button("Photogrametry!") {
-                                viewStore.send(.photogrammetry)
-                            }
-                        } else {
-                            Button("Share!") {
-                                viewStore.send(.share)
-                            }
-                        }
+//                        CaptureButton(store: store)
+//                            .frame(alignment: .center)
+//                        if viewStore.state.project.export == nil {
+//                            Button("Photogrametry!") {
+//                                viewStore.send(.photogrammetry)
+//                            }
+//                        } else {
+//                            Button("Share!") {
+//                                viewStore.send(.share)
+//                            }
+//                        }
 
                         Spacer()
                     }

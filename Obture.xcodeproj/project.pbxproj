@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D38D48B289ABDA8006A6DFF /* MeshAnchorGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D38D48A289ABDA8006A6DFF /* MeshAnchorGeometry.swift */; };
+		5D38D48D289ABDDF006A6DFF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D38D48C289ABDDF006A6DFF /* Extensions.swift */; };
 		5D3E3A7B286C8BC00053D597 /* ObtureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A7A286C8BC00053D597 /* ObtureApp.swift */; };
 		5D3E3A7F286C8BC10053D597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E3A7E286C8BC10053D597 /* Assets.xcassets */; };
 		5D3E3A82286C8BC10053D597 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E3A81286C8BC10053D597 /* Preview Assets.xcassets */; };
@@ -20,7 +22,6 @@
 		5D3E3AA0286CA7C70053D597 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3A9F286CA7C70053D597 /* Permissions.swift */; };
 		5D3E3AA6286CA8130053D597 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AA5286CA8130053D597 /* PermissionsView.swift */; };
 		5D3E3AB0286F5DED0053D597 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AAF286F5DED0053D597 /* Camera.swift */; };
-		5D3E3AB2286F60A20053D597 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E3AB1286F60A20053D597 /* CameraView.swift */; };
 		5D4083A32876D9C8000BB24F /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 5D4083A22876D9C8000BB24F /* Common */; };
 		5D4083A52876D9C8000BB24F /* Project in Frameworks */ = {isa = PBXBuildFile; productRef = 5D4083A42876D9C8000BB24F /* Project */; };
 		5D48C47F2876E20B00082591 /* Project.ExporterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D48C47E2876E20B00082591 /* Project.ExporterImpl.swift */; };
@@ -33,6 +34,7 @@
 		5D6AB31D286FFDFC0060142B /* CameraSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AB31C286FFDFC0060142B /* CameraSession.swift */; };
 		5D75765428954B2F00E2B448 /* Project.WriterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */; };
 		5D7E63EE287998F6008D4175 /* ExifMetadataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */; };
+		5D879F632896E2AA00C45BF8 /* ObtureARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D879F622896E2AA00C45BF8 /* ObtureARView.swift */; };
 		5D9EAB942895994300D4DD51 /* Quality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EAB932895994300D4DD51 /* Quality.swift */; };
 		5D9EAB98289599F400D4DD51 /* QualityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EAB97289599F400D4DD51 /* QualityView.swift */; };
 		5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEA452287059500001791A /* SessionConfigurator.swift */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		5D1DAE382873651300E836AB /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		5D1DAE4028760AD400E836AB /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
+		5D38D48A289ABDA8006A6DFF /* MeshAnchorGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshAnchorGeometry.swift; sourceTree = "<group>"; };
+		5D38D48C289ABDDF006A6DFF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5D3E3A77286C8BC00053D597 /* Obture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Obture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3E3A7A286C8BC00053D597 /* ObtureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtureApp.swift; sourceTree = "<group>"; };
 		5D3E3A7E286C8BC10053D597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		5D6AB31C286FFDFC0060142B /* CameraSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSession.swift; sourceTree = "<group>"; };
 		5D75765328954B2F00E2B448 /* Project.WriterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.WriterImpl.swift; sourceTree = "<group>"; };
 		5D7E63ED287998F6008D4175 /* ExifMetadataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifMetadataExtract.swift; sourceTree = "<group>"; };
+		5D879F622896E2AA00C45BF8 /* ObtureARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtureARView.swift; sourceTree = "<group>"; };
 		5D9EAB932895994300D4DD51 /* Quality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quality.swift; sourceTree = "<group>"; };
 		5D9EAB97289599F400D4DD51 /* QualityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityView.swift; sourceTree = "<group>"; };
 		5DAEA452287059500001791A /* SessionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfigurator.swift; sourceTree = "<group>"; };
@@ -231,6 +236,7 @@
 		5D3E3A99286CA7260053D597 /* Capture */ = {
 			isa = PBXGroup;
 			children = (
+				5D879F612896E29C00C45BF8 /* AR */,
 				5D3E3A9A286CA73A0053D597 /* Capture.swift */,
 				5D3E3A9C286CA7410053D597 /* CaptureView.swift */,
 				5DB31D562872B2A100B159F5 /* CaptureButton.swift */,
@@ -275,6 +281,16 @@
 				5D6A271C2879F96E00D96552 /* PreviewView.swift */,
 			);
 			path = Preview;
+			sourceTree = "<group>";
+		};
+		5D879F612896E29C00C45BF8 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				5D879F622896E2AA00C45BF8 /* ObtureARView.swift */,
+				5D38D48A289ABDA8006A6DFF /* MeshAnchorGeometry.swift */,
+				5D38D48C289ABDDF006A6DFF /* Extensions.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		5D9EAB922895993A00D4DD51 /* Quality */ = {
@@ -501,7 +517,6 @@
 			files = (
 				5D3E3A96286C92130053D597 /* Obture.swift in Sources */,
 				5D3E3A98286C92E90053D597 /* Dependencies.swift in Sources */,
-				5D3E3AB2286F60A20053D597 /* CameraView.swift in Sources */,
 				5DBC6E7C2876E8DE00F66586 /* CameraSession.PhotoTaker.swift in Sources */,
 				5D3E3AA6286CA8130053D597 /* PermissionsView.swift in Sources */,
 				5D3E3A9D286CA7410053D597 /* CaptureView.swift in Sources */,
@@ -519,9 +534,12 @@
 				5D48C4812876E2DF00082591 /* Node.CapturedPhotoWriterImpl.swift in Sources */,
 				5D3E3A91286C8F8E0053D597 /* GetStarted.swift in Sources */,
 				5DAEA453287059500001791A /* SessionConfigurator.swift in Sources */,
+				5D879F632896E2AA00C45BF8 /* ObtureARView.swift in Sources */,
+				5D38D48D289ABDDF006A6DFF /* Extensions.swift in Sources */,
 				5DB31D592872E19D00B159F5 /* PhotoCaptureDelegate.swift in Sources */,
 				5DB31D572872B2A100B159F5 /* CaptureButton.swift in Sources */,
 				5D3E3A7B286C8BC00053D597 /* ObtureApp.swift in Sources */,
+				5D38D48B289ABDA8006A6DFF /* MeshAnchorGeometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,29 +46,30 @@ enum Obture {
             switch action {
             case .active:
                 switch state {
-                case .capture(let captureState):
-                    switch captureState.camera {
-                    case .cameraSession(.idle(.inactiveState)):
-                        return .init(value: .capture(.camera(.cameraSession(.start))))
-                    default:
-                        break
-                    }
+//                case .capture(let captureState):
+//                    switch captureState.camera {
+//                    case .cameraSession(.idle(.inactiveState)):
+//                        return .init(value: .capture(.camera(.cameraSession(.start))))
+//                    default:
+//                        break
+//                    }
                 default:
                     break
                 }
             case .inactive:
-                switch state {
-                case .capture(let captureState):
-                    switch captureState.camera {
-                    case .cameraSession(.running):
-                        return .init(value: .capture(.camera(.cameraSession(.stop(.inactiveState)))))
-                    default:
-                        break
-                    }
-
-                case .getStarted:
-                    return .none
-                }
+//                switch state {
+//                case .capture(let captureState):
+//                    switch captureState.camera {
+//                    case .cameraSession(.running):
+//                        return .init(value: .capture(.camera(.cameraSession(.stop(.inactiveState)))))
+//                    default:
+//                        break
+//                    }
+//
+//                case .getStarted:
+//                    return .none
+//                }
+                break
             case .getStarted(.appear):
                 let projectId = UUID().uuidString
                 guard let projectDir = environment.createProjectDirectory(environment.projectsDirectory, projectId) else {
